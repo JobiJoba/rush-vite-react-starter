@@ -19,6 +19,15 @@
       "description": "Use --to packageName to only lint specific project",
       "enableParallelism": true,
       "ignoreMissingScript": true
+    },
+    {
+      "commandKind": "bulk",
+      "name": "test",
+      "ignoreDependencyOrder": true,
+      "summary": "test all the project",
+      "description": "Use --to packageName to only test specific project",
+      "enableParallelism": true,
+      "ignoreMissingScript": true
     }
 
     // {
