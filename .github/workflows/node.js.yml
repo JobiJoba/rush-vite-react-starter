@@ -28,6 +28,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'pnpm'
+                  cache-dependency-path: 'common/config/rush/pnpm-lock.yaml'
 
             - name: Install dependencies
               run: |
