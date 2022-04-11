@@ -11,6 +11,16 @@
    * "rush my-global-command --help".
    */
   "commands": [
+    {
+      "commandKind": "bulk",
+      "name": "lint",
+      "ignoreDependencyOrder": true,
+      "summary": "Lint all the project",
+      "description": "Use --to packageName to only lint specific project",
+      "enableParallelism": true,
+      "ignoreMissingScript": true
+    }
+
     // {
     //   /**
     //    * (Required) Determines the type of custom command.
