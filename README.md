@@ -8,12 +8,13 @@
 - Prettier
 - Jest
 - Cypress
-
+- Github-action for CI
 
 
 
 ### Todo 
 - Tailwind
+- githooks pre-commit prettier
 
 
 ### Could be interesting
