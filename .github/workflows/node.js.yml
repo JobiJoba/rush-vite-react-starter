@@ -40,12 +40,13 @@ jobs:
               continue-on-error: true
               run: |
                   cd common/config/rush
-                  echo ::set-env name=AUDITRES::$(pnpm audit --ignore-registry-errors)
+                  echo "::set-output name=::$(AUDITRES audit --ignore-registry-errors)"
+              id: auditres
 
             - uses: JasonEtco/create-an-issue@v2
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  AUDITRES: ${{ env.AUDITRES }}
+                  AUDITRES: ${{ steps.auditres.AUDITRES }}
               with:
                   assignees: bazijoba
                   update_existing: true
