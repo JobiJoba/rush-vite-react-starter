@@ -30,23 +30,17 @@ jobs:
                   node common/scripts/install-run-rush.js install
                   node common/scripts/install-run-rush.js build
 
-            - name: PNPM AUDIT
-              continue-on-error: true
-              run: |
-                  cd common/config/rush
-                  pnpm audit --ignore-registry-errors
-
             - name: Audit stored
               continue-on-error: true
               run: |
                   cd common/config/rush
-                  echo "::set-output name=::$(AUDITRES audit --ignore-registry-errors)"
+                  echo "::set-output name=AUDITRES::$(pnpm audit --ignore-registry-errors)"
               id: auditres
 
             - uses: JasonEtco/create-an-issue@v2
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  AUDITRES: ${{ steps.auditres.AUDITRES }}
+                  AUDITRES: ${{ steps.auditres.outputs.AUDITRES }}
               with:
                   assignees: bazijoba
                   update_existing: true
