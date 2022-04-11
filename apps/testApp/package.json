@@ -10,7 +10,8 @@
         "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
         "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
         "lint": "pnpm lint:format && pnpm lint:fix ",
-        "type-check": "tsc"
+        "type-check": "tsc",
+        "cypress:open": "cypress open"
     },
     "dependencies": {
         "react": "^18.0.0",
@@ -41,6 +42,9 @@
         "ts-jest": "^27.1.4",
         "ts-node": "^10.7.0",
         "typescript": "^4.6.3",
-        "vite": "^2.9.1"
+        "vite": "^2.9.1",
+        "cypress": "9.5.3",
+        "eslint-plugin-cypress": "2.12.1",
+        "@testing-library/cypress": "8.0.2"
     }
 }

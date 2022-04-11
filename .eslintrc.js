@@ -31,6 +31,7 @@ module.exports = {
         'plugin:jsx-a11y/recommended',
         'plugin:prettier/recommended', // Make sure this is always the last element in the array.
     ],
+    ignorePatterns: ['cypress/**/*'],
     plugins: ['simple-import-sort', 'prettier', 'jest'],
     rules: {
         'jest/no-disabled-tests': 'warn',
