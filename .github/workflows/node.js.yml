@@ -31,11 +31,13 @@ jobs:
                   node common/scripts/install-run-rush.js build
 
             - name: PNPM AUDIT
+              continue-on-error: true
               run: |
                   cd common/config/rush
                   pnpm audit --ignore-registry-errors
 
             - name: Audit stored
+              continue-on-error: true
               run: |
                   cd common/config/rush
                   echo ::set-env name=AUDITRES::$(pnpm audit --ignore-registry-errors)
