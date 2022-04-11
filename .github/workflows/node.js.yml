@@ -37,7 +37,14 @@ jobs:
               continue-on-error: true
               run: |
                   cd common/config/rush
-                  echo "::set-output name=AUDITRES::$(pnpm audit --ignore-registry-errors)"
+                  OUTPUT=$(pnpm audit --ignore-registry-errors 2>&1)
+                  exitCode=${?}
+                  OUTPUT="${OUTPUT//'%'/'%25'}​【7,6 m】"
+                  OUTPUT="${OUTPUT//$'\n'/'%0A'}"
+                  OUTPUT="${OUTPUT//$'\r'/'%0D'}"
+                  echo ::set-output name=status_code::${exitCode}
+                  echo ::set-output name=AUDITRES::$OUTPUT
+                  echo "${OUTPUT}
               id: auditres
 
             - uses: JasonEtco/create-an-issue@v2
