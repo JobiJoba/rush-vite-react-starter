@@ -37,18 +37,13 @@ jobs:
               continue-on-error: true
               run: |
                   cd common/config/rush
-                  OUTPUT=$(pnpm audit --ignore-registry-errors)
-                  OUTPUT="${OUTPUT//'%'/'%25'}​【7,6 m】"
-                  OUTPUT="${OUTPUT//$'\n'/'%0A'}"
-                  OUTPUT="${OUTPUT//$'\r'/'%0D'}"
-                  echo ::set-output name=AUDITRES::$OUTPUT
-                  echo "${OUTPUT}
+                  echo "AUDITRES=$(pnpm audit --ignore-registry-errors)" >> $GITHUB_ENV
               id: auditres
 
             - uses: JasonEtco/create-an-issue@v2
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  AUDITRES: ${{ steps.auditres.outputs.AUDITRES }}
+                  AUDITRES: ${{ env.AUDITRES }}
               with:
                   update_existing: true
                   search_existing: all
