@@ -33,8 +33,21 @@ jobs:
             - name: PNPM AUDIT
               run: |
                   cd common/config/rush
-                  pnpm audit
+                  pnpm audit --ignore-registry-errors
 
+            - name: Audit stored
+              run: |
+                  cd common/config/rush
+                  echo ::set-env name=AUDITRES::$(pnpm audit --ignore-registry-errors)
+
+            - uses: JasonEtco/create-an-issue@v2
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  AUDITRES: ${{ env.AUDITRES }}
+              with:
+                  assignees: bazijoba
+                  update_existing: true
+                  search_existing: all
             # Run eslint to check all packages
             - name: Lint packages
               run: node common/scripts/install-run-rush.js lint
