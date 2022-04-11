@@ -12,15 +12,14 @@ test('Renders main page correctly', async () => {
     const buttonCount = await screen.findByRole('button')
 
     // Pre Expecations
-    expect(buttonCount.innerHTML).toBe('count is: 0')
+    expect(buttonCount.innerHTML).toBe('0')
     // Instead of:
     // expect(codeCount).toBeNull();
 
     // Init
-    user.click(buttonCount)
-    user.click(buttonCount)
+    await user.click(buttonCount)
+    await user.click(buttonCount)
 
     // Post Expectations
-    expect(buttonCount.innerHTML).toBe('count is: 2')
-    expect(await screen.queryByText(/count is:/)).toBeInTheDocument()
+    expect(buttonCount.innerHTML).toBe('2')
 })
