@@ -1,6 +1,7 @@
 ---
 title: Audit Check
-assignees: bazijoba
+assignees:
+    - bazijoba
 labels: audit
 ---
 
