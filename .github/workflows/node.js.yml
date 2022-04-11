@@ -31,7 +31,10 @@ jobs:
                   node common/scripts/install-run-rush.js build
 
             - name: PNPM AUDIT
-              run: pnpm common/config/rush
+              run: |
+                  cd common/config/rush
+                  pnpm audit
+
             # Run eslint to check all packages
             - name: Lint packages
               run: node common/scripts/install-run-rush.js lint
