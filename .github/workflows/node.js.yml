@@ -42,7 +42,6 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   AUDITRES: ${{ steps.auditres.outputs.AUDITRES }}
               with:
-                  assignees: bazijoba
                   update_existing: true
                   search_existing: all
             # Run eslint to check all packages
