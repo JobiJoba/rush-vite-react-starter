@@ -27,7 +27,7 @@ jobs:
                   cache: 'npm'
 
             - name: Install dependencies
-               run: |
+            - run: |
                   node common/scripts/install-run-rush.js change -v
                   node common/scripts/install-run-rush.js install
                   node common/scripts/install-run-rush.js build
