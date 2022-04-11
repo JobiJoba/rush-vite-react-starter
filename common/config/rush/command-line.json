@@ -27,7 +27,9 @@
       "summary": "test all the project",
       "description": "Use --to packageName to only test specific project",
       "enableParallelism": true,
-      "ignoreMissingScript": true
+      "ignoreMissingScript": true,
+      "allowWarningsInSuccessfulBuild":true
+
     }
 
     // {
