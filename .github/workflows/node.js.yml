@@ -36,14 +36,16 @@ jobs:
             - name: Audit stored
               continue-on-error: true
               run: |
-                  cd common/config/rush
-                  echo "$(pnpm audit --ignore-registry-errors)" >> $GITHUB_ENV
+
+                  AUDITRES=$(cd common/config/rush && pnpm audit --ignore-registry-errors) || true
+
+                  echo "::set-output name=AUDITRES::$AUDITRES"
               id: auditres
 
-            - uses: JasonEtco/create-an-issue@v2
+            - uses: dblock/create-a-github-issue@v3
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  AUDITRES: ${{ env.AUDITRES }}
+                  AUDITRES: ${{ steps.auditres.outputs.AUDITRES }}
               with:
                   update_existing: true
                   search_existing: all
