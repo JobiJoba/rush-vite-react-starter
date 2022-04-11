@@ -37,7 +37,7 @@ jobs:
               continue-on-error: true
               run: |
                   cd common/config/rush
-                  echo "AUDITRES=$(pnpm audit --ignore-registry-errors)" >> $GITHUB_ENV
+                  echo "$(pnpm audit --ignore-registry-errors)" >> $GITHUB_ENV
               id: auditres
 
             - uses: JasonEtco/create-an-issue@v2
