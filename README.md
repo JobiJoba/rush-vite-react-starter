@@ -9,13 +9,13 @@
 - Jest
 - Cypress
 - Github-action for CI
+- githooks pre-commit prettier
 
 
 
 ### Todo 
 - Tailwind
-- githooks pre-commit prettier
-
+- Semantic releases
 
 ### Could be interesting
 

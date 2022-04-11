@@ -25,6 +25,7 @@ specifiers:
   eslint-plugin-simple-import-sort: ^7.0.0
   identity-obj-proxy: ^3.0.0
   jest: ^27.5.1
+  minimist: 1.2.5
   prettier: ^2.6.2
   react: ^18.0.0
   react-dom: ^18.0.0
@@ -58,6 +59,7 @@ dependencies:
   eslint-plugin-simple-import-sort: 7.0.0_eslint@8.13.0
   identity-obj-proxy: 3.0.0
   jest: 27.5.1_ts-node@10.7.0
+  minimist: 1.2.5
   prettier: 2.6.2
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
@@ -1021,6 +1023,7 @@ packages:
 
   /@types/yauzl/2.10.0:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
+    requiresBuild: true
     dependencies:
       '@types/node': 17.0.23
     dev: false
@@ -1725,6 +1728,7 @@ packages:
   /colors/1.4.0:
     resolution: {integrity: sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==}
     engines: {node: '>=0.1.90'}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2083,6 +2087,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [android]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2091,6 +2096,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [android]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2099,6 +2105,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [darwin]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2107,6 +2114,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [darwin]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2115,6 +2123,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [freebsd]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2123,6 +2132,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [freebsd]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2131,6 +2141,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ia32]
     os: [linux]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2139,6 +2150,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [linux]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2147,6 +2159,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm]
     os: [linux]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2155,6 +2168,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [linux]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2163,6 +2177,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [mips64el]
     os: [linux]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2171,6 +2186,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ppc64]
     os: [linux]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2179,6 +2195,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [riscv64]
     os: [linux]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2187,6 +2204,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [s390x]
     os: [linux]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2195,6 +2213,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [netbsd]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2203,6 +2222,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [openbsd]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2211,6 +2231,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [sunos]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2219,6 +2240,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ia32]
     os: [win32]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2227,6 +2249,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2235,6 +2258,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [win32]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2785,6 +2809,7 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -4076,6 +4101,10 @@ packages:
       brace-expansion: 1.1.11
     dev: false
 
+  /minimist/1.2.5:
+    resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
+    dev: false
+
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: false
@@ -5342,7 +5371,7 @@ packages:
     dev: false
 
   file:projects/testapp.tgz:
-    resolution: {integrity: sha512-+lqJN3u9vco9AH8gYP7ykklriyVvzr+X3qFVdlmRzquUNDo048FsqZ6Yooj4jUIJWjgQm/Ro+z+iivkO2pQtrA==, tarball: file:projects/testapp.tgz}
+    resolution: {integrity: sha512-+QD+OYR/b2Ieb6dFs82pqwsZDxX9lj9MdThhXeIySoIEWrj9ZvRIV4gJGUOnA472KLPYL1wXn47Yjg9crURByQ==, tarball: file:projects/testapp.tgz}
     name: '@rush-temp/testapp'
     version: 0.0.0
     dependencies:
@@ -5369,6 +5398,7 @@ packages:
       eslint-plugin-simple-import-sort: 7.0.0_eslint@8.13.0
       identity-obj-proxy: 3.0.0
       jest: 27.5.1_ts-node@10.7.0
+      minimist: 1.2.5
       prettier: 2.6.2
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
