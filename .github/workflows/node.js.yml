@@ -27,32 +27,42 @@ jobs:
                   cache: 'pnpm'
                   cache-dependency-path: 'common/config/rush/pnpm-lock.yaml'
 
-            - name: Install dependencies
+            # - name: Install dependencies
+            #   run: |
+            #       node common/scripts/install-run-rush.js change -v
+            #       node common/scripts/install-run-rush.js install
+            #       node common/scripts/install-run-rush.js build
+
+            - name: Audit not stored
+              continue-on-error: true
               run: |
-                  node common/scripts/install-run-rush.js change -v
-                  node common/scripts/install-run-rush.js install
-                  node common/scripts/install-run-rush.js build
+                  cd common/config/rush
+                  pnpm audit --ignore-registry-errors
 
             - name: Audit stored
               id: auditres
               continue-on-error: true
               run: |
+
                   cd common/config/rush
-                  delta=$(pnpm audit --ignore-registry-errors)
-                  delta="${delta//'%'/'%25'}"
-                  delta="${delta//$'\n'/'%0A'}"
-                  delta="${delta//$'\r'/'%0D'}"
-                  echo "::set-output name=delta_code::$delta"
+                  echo "GITHUB_SHA_SHORT=$(echo $(pnpm audit --ignore-registry-errors))" >> $GITHUB_ENV
+              shell: bash
+
+            - name: test
+              id: diff_rev
+              shell: bash
+              run: |
+                  echo $GITHUB_SHA_SHORT
 
             - uses: dblock/create-a-github-issue@v3
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  AUDITRES: ${{ steps.auditres.outputs.delta_code }}
+                  AUDITRES: $GITHUB_SHA_SHORT
               with:
                   update_existing: true
                   search_existing: all
-            # Run eslint to check all packages
-            - name: Lint packages
-              run: node common/scripts/install-run-rush.js lint
-            - name: Run tests
-              run: node common/scripts/install-run-rush.js test
+            # # Run eslint to check all packages
+            # - name: Lint packages
+            #   run: node common/scripts/install-run-rush.js lint
+            # - name: Run tests
+            #   run: node common/scripts/install-run-rush.js test
