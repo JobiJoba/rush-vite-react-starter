@@ -57,7 +57,7 @@ jobs:
             - uses: dblock/create-a-github-issue@v3
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  AUDITRES: $GITHUB_SHA_SHORT
+                  AUDITRES: ${{ env.GITHUB_SHA_SHORT }}
               with:
                   update_existing: true
                   search_existing: all
