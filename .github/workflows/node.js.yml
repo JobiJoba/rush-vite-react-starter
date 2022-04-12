@@ -37,7 +37,8 @@ jobs:
               id: auditres
               continue-on-error: true
               run: |
-                  delta=$(cd common/config/rush && pnpm audit --ignore-registry-errors)
+                  cd common/config/rush
+                  delta=$(pnpm audit --ignore-registry-errors)
                   delta="${delta//'%'/'%25'}"
                   delta="${delta//$'\n'/'%0A'}"
                   delta="${delta//$'\r'/'%0D'}"
