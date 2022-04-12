@@ -34,19 +34,19 @@ jobs:
                   node common/scripts/install-run-rush.js build
 
             - name: Audit stored
+              id: auditres
               continue-on-error: true
               run: |
-                  AUDITRES=$(cd common/config/rush && pnpm audit --ignore-registry-errors)
-                  AUDITRES="${AUDITRES//'%'/'%25'}"
-                  AUDITRES="${AUDITRES//$'\n'/'%0A'}"
-                  AUDITRES="${AUDITRES//$'\r'/'%0D'}"
-                  echo "::set-output name=AUDIT::$AUDITRES"
-              id: auditres
+                  delta=$(cd common/config/rush && pnpm audit --ignore-registry-errors)
+                  delta="${delta//'%'/'%25'}"
+                  delta="${delta//$'\n'/'%0A'}"
+                  delta="${delta//$'\r'/'%0D'}"
+                  echo "::set-output name=delta_code::$delta"
 
             - uses: dblock/create-a-github-issue@v3
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  AUDITRES: ${{ steps.auditres.outputs.AUDIT }}
+                  AUDITRES: ${{ steps.auditres.outputs.delta_code }}
               with:
                   update_existing: true
                   search_existing: all
