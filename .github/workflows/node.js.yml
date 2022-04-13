@@ -46,6 +46,11 @@ jobs:
                   JSON_RESPONSE="${JSON_RESPONSE//'%'/'%25'}"
                   JSON_RESPONSE="${JSON_RESPONSE//$'\n'/'%0A'}"
                   JSON_RESPONSE="${JSON_RESPONSE//$'\r'/'%0D'}"
+                  JSON_RESPONSE="${JSON_RESPONSE//$'─'/''}"
+                  JSON_RESPONSE="${JSON_RESPONSE//$'┤'/''}"
+                  JSON_RESPONSE="${JSON_RESPONSE//$'┘'/''}"
+                  JSON_RESPONSE="${JSON_RESPONSE//$'┼'/''}"
+                  JSON_RESPONSE="${JSON_RESPONSE//$'┴'/''}"
                   echo "::set-output name=changelog::$(echo "$JSON_RESPONSE")"
               id: my_string
             - name: display string
