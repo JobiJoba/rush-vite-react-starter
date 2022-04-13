@@ -39,25 +39,23 @@ jobs:
                   cd common/config/rush
                   pnpm audit --ignore-registry-errors
 
-            - name: Audit stored
-              id: auditres
-              continue-on-error: true
+            - name: create string
               run: |
-
                   cd common/config/rush
-                  echo "GITHUB_SHA_SHORT=$(echo $(pnpm audit --ignore-registry-errors))" >> $GITHUB_ENV
-              shell: bash
-
-            - name: test
-              id: diff_rev
-              shell: bash
+                  export JSON_RESPONSE="$(pnpm audit --ignore-registry-errors)"
+                  JSON_RESPONSE="${JSON_RESPONSE//'%'/'%25'}"
+                  JSON_RESPONSE="${JSON_RESPONSE//$'\n'/'%0A'}"
+                  JSON_RESPONSE="${JSON_RESPONSE//$'\r'/'%0D'}"
+                  echo "::set-output name=changelog::$(echo "$JSON_RESPONSE")"
+              id: my_string
+            - name: display string
               run: |
-                  echo $GITHUB_SHA_SHORT
+                  echo "The string is: ${{ steps.my_string.outputs.changelog }}"
 
             - uses: dblock/create-a-github-issue@v3
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  AUDITRES: ${{ env.GITHUB_SHA_SHORT }}
+                  AUDITRES: ${{ steps.my_string.outputs.changelog }}
               with:
                   update_existing: true
                   search_existing: all
